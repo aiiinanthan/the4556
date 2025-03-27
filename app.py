@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from waitress import serve
 
 app = Flask(__name__)
 CORS(app)
@@ -27,4 +28,5 @@ def place_order():
     return jsonify({"message": "Order placed successfully!"})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    print("Starting server on port 5000...")
+    serve(app, host="0.0.0.0", port=5000)
